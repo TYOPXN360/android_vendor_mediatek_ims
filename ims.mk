@@ -24,6 +24,15 @@ PRODUCT_PACKAGES += \
     ImsService \
     MtkGbaService
 
+# com.android.internal.telephony.metrics.TelephonyMetrics was removed in
+# Android 17 but the ImsService APK above is built against Android 16 and
+# instantiates it during onCreate(), so the app crashes at boot and never
+# registers its IMtkRadioEx indication callbacks - leaving the RIL with
+# "mRadioIndicationIms == NULL" and IMS unregistered. Put the removed no-op
+# class back on the boot classpath.
+PRODUCT_BOOTCLASSPATH_LIBRARIES += \
+    mediatek-telephony-metrics-stub
+
 # IMS Properties
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.dbg.volte_avail_ovr=1 \
