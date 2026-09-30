@@ -16,7 +16,7 @@
 // The methods are no-ops: they only ever fed metrics that no longer exist.
 // The package itself is still present in A17, so adding the removed class back
 // to the boot classpath is safe.
-java_boot_library {
+android_boot_library {
     name: "mediatek-telephony-metrics-stub",
     srcs: ["src/com/android/internal/telephony/metrics/TelephonyMetrics.java"],
 }
