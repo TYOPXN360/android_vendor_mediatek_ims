@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: Apache-2.0
+
+// com.android.internal.telephony.metrics.TelephonyMetrics was removed in
+// Android 17, but the MediaTek ImsService APK shipped in this vendor is built
+// against Android 16 and instantiates it from ImsApp.onCreate() ->
+// ImsRILAdapter. Without this class the app dies at first boot with
+//
+//   java.lang.ClassNotFoundException:
+//       com.android.internal.telephony.metrics.TelephonyMetrics
+//       ImsRILAdapter.java:434
+//
+// so it never registers its IMtkRadioEx indication callbacks and the RIL keeps
+// logging "mRadioIndicationIms == NULL" while IMS never registers.
+//
+// The methods are no-ops: they only ever fed metrics that no longer exist. The
+// package itself is still present in A17, so adding the removed class back to
+// the boot classpath (PRODUCT_BOOT_JARS) is safe.
+java_library_static {
+    name: "mediatek-telephony-metrics-stub",
+    srcs: ["compat/src/com/android/internal/telephony/metrics/TelephonyMetrics.java"],
+    installable: true,
+    sdk_version: "current",
+}

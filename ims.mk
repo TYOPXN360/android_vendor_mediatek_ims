@@ -29,10 +29,11 @@ PRODUCT_PACKAGES += \
 # 17 but still referenced by the Android 16 era ImsService APK above. Without
 # it ImsService dies with ClassNotFoundException in onCreate(), never registers
 # its IMtkRadioEx indication callbacks, and the RIL keeps reporting
-# "mRadioIndicationIms == NULL" with IMS unregistered. java_boot_library puts
-# the stub on the boot classpath on its own.
+# "mRadioIndicationIms == NULL" with IMS unregistered.
 PRODUCT_PACKAGES += \
     mediatek-telephony-metrics-stub
+
+PRODUCT_BOOT_JARS += mediatek-telephony-metrics-stub
 
 # IMS Properties
 PRODUCT_PRODUCT_PROPERTIES += \
