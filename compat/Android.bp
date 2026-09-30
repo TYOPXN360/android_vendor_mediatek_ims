@@ -17,7 +17,7 @@
 // the boot classpath (PRODUCT_BOOT_JARS) is safe.
 java_library_static {
     name: "mediatek-telephony-metrics-stub",
-    srcs: ["compat/src/com/android/internal/telephony/metrics/TelephonyMetrics.java"],
+    srcs: ["src/com/android/internal/telephony/metrics/TelephonyMetrics.java"],
     installable: true,
     sdk_version: "current",
 }
