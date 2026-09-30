@@ -29,5 +29,4 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := mediatek-telephony-metrics-stub
 LOCAL_SRC_FILES := src/com/android/internal/telephony/metrics/TelephonyMetrics.java
 LOCAL_MODULE_TAGS := optional
-LOCAL_SDK_VERSION := current
 include $(BUILD_JAVA_BOOT_LIBRARY)
